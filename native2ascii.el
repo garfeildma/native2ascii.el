@@ -19,12 +19,14 @@
 
 (defun native2ascii (start end)
   (interactive "r")
-  (let ((coding-system-for-write 'shift_jis))
+  (let ((coding-system-for-write 'chinese-gbk)
+        (coding-system-for-read 'chinese-gbk))
 	(shell-command-on-region start end native2ascii-command-format nil t)))
 
 (defun ascii2native (start end)
   (interactive "r")
-  (let ((coding-system-for-read 'shift_jis))
+  (let ((coding-system-for-write 'chinese-gbk)
+        (coding-system-for-read 'chinese-gbk))
 	(shell-command-on-region start end ascii2native-command-format nil t)))
 
 (defun find-file-hook-ascii2native ()
